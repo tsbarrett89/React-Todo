@@ -9,7 +9,13 @@ export default class TodoList extends Component {
     render() {
         return (
             <>
-                {this.props.todos.map(todo=>(<Todo isCompleted={this.props.isCompleted} todo={todo} key={todo.id}></Todo>))}
+                {this.props.todos.map(todo=>(
+                    <Todo 
+                        isCompleted={this.props.isCompleted} 
+                        todo={todo} 
+                        key={todo.id}
+                    />
+                ))}
             </>
         )
     }

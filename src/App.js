@@ -26,9 +26,9 @@ class App extends React.Component {
   }
   
 
-  addTodoItem = (str) => {
+  addTodoItem = (task) => {
     let newObj = {
-      task: str,
+      task: task,
       id: Math.random(),
       completed: false
     }
@@ -53,10 +53,8 @@ class App extends React.Component {
       todos: this.state.todos.map(todo=>{
         if (todo.id===id){
           return {
-            task: todo.task,
-            id: todo.id,
+            ...todo,
             completed: !todo.completed,
-            textDecoration: 'line-through'
           }
         } else{
           return todo;
@@ -77,15 +75,6 @@ class App extends React.Component {
     })
   }
 
-
-  search = (str) => {
-    this.setState({
-      filteredTodos: this.state.todos.filter(todo=>{
-        return todo.task.toUpperCase().includes(str.toUpperCase())
-      }),
-      isFiltered: true
-    });
-  }
   // you will need a place to store your state in this component.
   // design `App` to be the parent component of your application.
   // this component is going to take care of state, and any change handlers you need to work with your state
